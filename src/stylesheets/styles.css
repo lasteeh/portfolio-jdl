@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@200;400;600&display=swap");
+
+@layer reset, base, layout, components, utilities, general;
+
+@layer reset {
+  :root {
+    --primary-color-100: #b7c6e1;
+    --primary-color-400: #4a6eb0;
+    --primary-color-500: #485163;
+    --primary-color-800: #1e2c47;
+    --primary-color-900: #252a33;
+
+    --neutral-color-100: #f5f5f5;
+    --neutral-color-900: #0a0f18;
+
+    --fw-thin: 200;
+    --fw-semibold: 400;
+    --fw-bold: 600;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6, p, a, span, button) {
+    font-family: inherit;
+    font-weight: inherit;
+
+    text-decoration: none;
+    color: inherit;
+    font-style: normal;
+  }
+
+  a:hover {
+    opacity: 0.25;
+  }
+
+  :where(ul, li) {
+    list-style: none;
+    padding: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: var(--neutral-color-900);
+      --text-color: var(--neutral-color-100);
+      --border-color: hsl(0, 0%, 96%, 0.5);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg-color: var(--primary-color-100);
+      --text-color: var(--neutral-color-900);
+      --border-color: hsl(219, 41%, 7%, 0.5);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: var(--fw-thin);
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+}
+
+@layer layout {
+  body {
+    --margin: 1em;
+
+    position: relative;
+
+    margin: var(--margin);
+  }
+
+  #main-frame {
+    border: 1px solid var(--border-color);
+
+    position: fixed;
+    inset: var(--margin);
+  }
+
+  #main-header {
+    position: fixed;
+    top: calc(var(--margin) * 6);
+    left: calc(var(--margin) * 2);
+  }
+
+  #name {
+    position: fixed;
+    top: calc(var(--margin) * 2);
+    left: calc(var(--margin) * 2);
+
+    & :where(h1, p) {
+      margin: 0;
+    }
+  }
+}
