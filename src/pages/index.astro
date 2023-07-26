@@ -1,15 +1,137 @@
 ---
+import "../stylesheets/styles.css";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      Catchy Catchphrase Here | Joshua David Lantican - Freelance Video Editor
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="main-frame"></div>
+    <header id="main-header">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Works</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Info</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="hero">
+        <div id="name">
+          <h1>Joshua David Lantican</h1>
+          <p>Freelance Video Editor</p>
+        </div>
+        <p>
+          I'm Joshua, a passionate and experienced freelance video editor with
+          over five years of expertise in the field. My focus lies in Social
+          Media Management and Video Editing, with a significant specialization
+          in the Real Estate Industry, where I have successfully garnered over
+          15,000 views across various social media platforms.
+        </p>
+        <p>
+          As a professional video editor, my mission is to create captivating
+          and persuasive videos that resonate with your audience. I excel at
+          transforming raw footage into engaging final products, employing my
+          creativity and storytelling skills to effectively communicate your
+          message.
+        </p>
+      </section>
+      <section id="works">
+        <h2>Works</h2>
+        <ul>
+          <li>
+            <h3>WeRevive</h3>
+            <p>Freelance Video Editor</p>
+          </li>
+          <li>
+            <h3>London Outsourced Inc. - July Social</h3>
+            <p>Freelance Creative Artist</p>
+          </li>
+          <li>
+            <h3>The Summit Group - Powered by EXP</h3>
+            <p>Social Media Manager / Video Editor</p>
+          </li>
+          <li>
+            <h3>Jesus Is Lord Church - Los Baños</h3>
+            <p>Multimedia and Arts Network</p>
+          </li>
+        </ul>
+      </section>
+      <section id="services">
+        <h2>Services</h2>
+        <ul>
+          <li>Post-Process Video Edit</li>
+          <li>Social Media Video Edit (Youtube, Reels, TikTok)</li>
+          <li>Video Repurpose</li>
+          <li>Podcast/Audio Edit</li>
+          <li>Photo Edit</li>
+          <li>Graphic Design</li>
+          <li>Marketing (Email Marketing, Newsletter, Flyers & Posters)</li>
+        </ul>
+      </section>
+      <section id="info">
+        <h2>Info</h2>
+        <p>Education</p>
+        <ul>
+          <li>
+            <p>Podcast Editing Course</p>
+            <p>2021, Life with Glaze</p>
+          </li>
+          <li>
+            <p>Video Editing - Specialist Virtual Class</p>
+            <p>202, CIIT Philippines</p>
+          </li>
+        </ul>
+        <p>Tools</p>
+        <ul>
+          <li>Adobe Premiere Pro</li>
+          <li>Adobe After Effects</li>
+          <li>Adobe Audition</li>
+          <li>Adobe Photoshop</li>
+          <li>Reaper - Digital Audio Workstation</li>
+        </ul>
+        <button type="button">My Resume</button>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <address>
+          <p>
+            <a href="mailto:jdavid.lantican@gmail.com"
+              >jdavid.lantican@gmail.com</a
+            >
+          </p>
+          <p><a href="tel:+639279132298">+63 (927) 913-2298</a></p>
+          <p>Bay, Laguna 4033</p>
+        </address>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; <span id="copyright-year">{currentYear}</span> Joshua David Lantican
+      </p>
+    </footer>
+  </body>
 </html>
+
+<script>
+  const copyrightYear = document.querySelector(
+    "#copyright-year"
+  ) as HTMLElement;
+  copyrightYear.innerText = new Date().getFullYear().toString();
+</script>
