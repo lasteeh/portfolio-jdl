@@ -4,6 +4,8 @@
 
 @layer reset {
   :root {
+    --padding: 1em;
+
     --primary-color-100: #b7c6e1;
     --primary-color-400: #4a6eb0;
     --primary-color-500: #485163;
@@ -16,9 +18,13 @@
     --fw-thin: 200;
     --fw-semibold: 400;
     --fw-bold: 600;
+
+    --z-main-nav: 500;
   }
 
   * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
   }
 
@@ -40,9 +46,13 @@
     opacity: 0.25;
   }
 
+  button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+  }
+
   :where(ul, li) {
     list-style: none;
-    padding: 0;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -64,6 +74,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-block-start: calc(var(--padding) * 2);
   }
 
   body {
@@ -73,37 +84,59 @@
     background-color: var(--bg-color);
     color: var(--text-color);
   }
+
+  address {
+    word-break: break-all;
+  }
 }
 
 @layer layout {
   body {
-    --margin: 1em;
-
     position: relative;
 
-    margin: var(--margin);
+    margin: var(--padding);
+    padding: var(--padding);
+
+    isolation: isolate;
+
+    & main > section {
+      position: relative;
+      min-height: calc(100vh - (var(--padding) * 4));
+
+      &:not(:first-of-type) {
+        margin-block-start: calc(var(--padding) * 2);
+      }
+    }
   }
 
   #main-frame {
     border: 1px solid var(--border-color);
 
     position: fixed;
-    inset: var(--margin);
+    inset: var(--padding);
+  }
+
+  #main-header,
+  #name,
+  #main-footer {
+    position: fixed;
+    left: calc(var(--padding) * 2);
+    right: calc(var(--padding) * 2);
+
+    max-width: max-content;
+
+    z-index: var(--z-main-nav);
   }
 
   #main-header {
-    position: fixed;
-    top: calc(var(--margin) * 6);
-    left: calc(var(--margin) * 2);
+    top: calc(var(--padding) * 12);
   }
 
   #name {
-    position: fixed;
-    top: calc(var(--margin) * 2);
-    left: calc(var(--margin) * 2);
+    top: calc(var(--padding) * 2);
+  }
 
-    & :where(h1, p) {
-      margin: 0;
-    }
+  #main-footer {
+    bottom: calc(var(--padding) * 2);
   }
 }
