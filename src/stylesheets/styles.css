@@ -4,7 +4,7 @@
 
 @layer reset {
   :root {
-    --padding: 1em;
+    --padding: 2em;
 
     --primary-color-100: #b7c6e1;
     --primary-color-400: #4a6eb0;
@@ -18,6 +18,10 @@
     --fw-thin: 200;
     --fw-semibold: 400;
     --fw-bold: 600;
+
+    --fs-small: clamp(0.5rem, 5vw, 0.75rem);
+    --fs-regular: clamp(0.75rem, 5vw, 1rem);
+    --fs-large: clamp(1.75rem, 5vw, 3rem);
 
     --z-main-nav: 500;
     --z-content-bg: -200;
@@ -52,7 +56,7 @@
     border: 1px solid var(--border-color);
   }
 
-  :where(ul, li) {
+  :where(ul, ol, li) {
     list-style: none;
   }
 
@@ -81,9 +85,15 @@
   body {
     font-family: "Roboto Flex", sans-serif;
     font-weight: var(--fw-thin);
+    font-size: var(--fs-regular);
 
     background-color: var(--bg-color);
     color: var(--text-color);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-size: var(--fs-large);
+    font-weight: var(--fw-thin);
   }
 
   address {
@@ -99,23 +109,6 @@
     padding: var(--padding);
 
     isolation: isolate;
-
-    .panel {
-      min-height: calc(100vh - (var(--padding) * 4));
-
-      &:not(:first-of-type) {
-        margin-block-start: calc(var(--padding) * 2);
-      }
-    }
-
-    .panel__bg {
-      position: fixed;
-      inset: calc(var(--padding));
-      background-color: hsl(0, 100%, 40%, 0.15); /* placeholder */
-
-      z-index: var(--z-content-bg);
-      isolation: isolate;
-    }
   }
 
   #main-frame {
@@ -139,7 +132,7 @@
   }
 
   #main-header {
-    top: calc(var(--padding) * 12);
+    top: calc(var(--padding) * 8);
   }
 
   #name {
@@ -148,5 +141,58 @@
 
   #main-footer {
     bottom: calc(var(--padding) * 2);
+  }
+
+  .panel {
+    position: relative;
+    min-height: calc(100vh - (var(--padding) * 4));
+
+    display: flex;
+    flex-flow: column;
+    justify-content: end;
+
+    &:not(:first-of-type) {
+      margin-block-start: calc(var(--padding) * 2);
+    }
+  }
+
+  .panel__bg {
+    position: fixed;
+    inset: calc(var(--padding));
+
+    z-index: var(--z-content-bg);
+    isolation: isolate;
+  }
+
+  #hero {
+    .panel__content p {
+      max-width: 400px;
+      margin-inline-start: auto;
+
+      &:not(:first-of-type) {
+        margin-block-start: 1em;
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+  .text-left {
+    text-align: left;
   }
 }

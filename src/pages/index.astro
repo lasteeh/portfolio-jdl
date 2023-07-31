@@ -1,4 +1,5 @@
 ---
+import HeroCanvas from "../components/HeroCanvas.astro";
 import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
@@ -37,91 +38,102 @@ const currentYear = new Date().getFullYear();
           <h1>Joshua David Lantican</h1>
           <p>Freelance Video Editor</p>
         </div>
-        <p>
-          I'm Joshua, a passionate and experienced freelance video editor with
-          over five years of expertise in the field. My focus lies in Social
-          Media Management and Video Editing, with a significant specialization
-          in the Real Estate Industry, where I have successfully garnered over
-          15,000 views across various social media platforms.
-        </p>
-        <p>
-          As a professional video editor, my mission is to create captivating
-          and persuasive videos that resonate with your audience. I excel at
-          transforming raw footage into engaging final products, employing my
-          creativity and storytelling skills to effectively communicate your
-          message.
-        </p>
+        <div class="panel__content">
+          <p>
+            I'm Joshua, a passionate and experienced freelance video editor with
+            over five years of expertise in the field. My focus lies in Social
+            Media Management and Video Editing, with a significant
+            specialization in the Real Estate Industry, where I have
+            successfully garnered over 15,000 views across various social media
+            platforms.
+          </p>
+          <p>
+            As a professional video editor, my mission is to create captivating
+            and persuasive videos that resonate with your audience. I excel at
+            transforming raw footage into engaging final products, employing my
+            creativity and storytelling skills to effectively communicate your
+            message.
+          </p>
+        </div>
         <div class="panel__bg">
-          <!-- place bg content here -->
+          <HeroCanvas />
         </div>
       </section>
       <section class="panel" id="works">
-        <h2>Works</h2>
-        <ul>
-          <li>
-            <h3>WeRevive</h3>
-            <p>Freelance Video Editor</p>
-          </li>
-          <li>
-            <h3>London Outsourced Inc. - July Social</h3>
-            <p>Freelance Creative Artist</p>
-          </li>
-          <li>
-            <h3>The Summit Group - Powered by EXP</h3>
-            <p>Social Media Manager / Video Editor</p>
-          </li>
-          <li>
-            <h3>Jesus Is Lord Church - Los Baños</h3>
-            <p>Multimedia and Arts Network</p>
-          </li>
-        </ul>
+        <h2 class="sr-only">Works</h2>
+        <div class="panel__content | text-right">
+          <ul>
+            <li>
+              <h3>WeRevive</h3>
+              <p>Freelance Video Editor</p>
+            </li>
+            <li>
+              <h3>London Outsourced Inc. - July Social</h3>
+              <p>Freelance Creative Artist</p>
+            </li>
+            <li>
+              <h3>The Summit Group - Powered by EXP</h3>
+              <p>Social Media Manager / Video Editor</p>
+            </li>
+            <li>
+              <h3>Jesus Is Lord Church - Los Baños</h3>
+              <p>Multimedia and Arts Network</p>
+            </li>
+          </ul>
+        </div>
       </section>
       <section class="panel" id="services">
-        <h2>Services</h2>
-        <ul>
-          <li>Post-Process Video Edit</li>
-          <li>Social Media Video Edit (Youtube, Reels, TikTok)</li>
-          <li>Video Repurpose</li>
-          <li>Podcast/Audio Edit</li>
-          <li>Photo Edit</li>
-          <li>Graphic Design</li>
-          <li>Marketing (Email Marketing, Newsletter, Flyers & Posters)</li>
-        </ul>
+        <h2 class="sr-only">Services</h2>
+        <div class="panel__content | text-right">
+          <ul>
+            <li>Post-Process Video Edit</li>
+            <li>Social Media Video Edit (Youtube, Reels, TikTok)</li>
+            <li>Video Repurpose</li>
+            <li>Podcast/Audio Edit</li>
+            <li>Photo Edit</li>
+            <li>Graphic Design</li>
+            <li>Marketing (Email Marketing, Newsletter, Flyers & Posters)</li>
+          </ul>
+        </div>
       </section>
       <section class="panel" id="info">
-        <h2>Info</h2>
-        <p>Education</p>
-        <ul>
-          <li>
-            <p>Podcast Editing Course</p>
-            <p>2021, Life with Glaze</p>
-          </li>
-          <li>
-            <p>Video Editing - Specialist Virtual Class</p>
-            <p>202, CIIT Philippines</p>
-          </li>
-        </ul>
-        <p>Tools</p>
-        <ul>
-          <li>Adobe Premiere Pro</li>
-          <li>Adobe After Effects</li>
-          <li>Adobe Audition</li>
-          <li>Adobe Photoshop</li>
-          <li>Reaper - Digital Audio Workstation</li>
-        </ul>
-        <button type="button">My Resume</button>
+        <h2 class="sr-only">Info</h2>
+        <div class="panel__content | text-right">
+          <p>Education</p>
+          <ul>
+            <li>
+              <p>Podcast Editing Course</p>
+              <p>2021, Life with Glaze</p>
+            </li>
+            <li>
+              <p>Video Editing - Specialist Virtual Class</p>
+              <p>202, CIIT Philippines</p>
+            </li>
+          </ul>
+          <p>Tools</p>
+          <ul>
+            <li>Adobe Premiere Pro</li>
+            <li>Adobe After Effects</li>
+            <li>Adobe Audition</li>
+            <li>Adobe Photoshop</li>
+            <li>Reaper - Digital Audio Workstation</li>
+          </ul>
+          <button type="button">My Resume</button>
+        </div>
       </section>
       <section class="panel" id="contact">
-        <h2>Contact</h2>
-        <address>
-          <p>
-            <a href="mailto:jdavid.lantican@gmail.com"
-              >jdavid.lantican@gmail.com</a
-            >
-          </p>
-          <p><a href="tel:+639279132298">+63 (927) 913-2298</a></p>
-          <p>Bay, Laguna 4033</p>
-        </address>
+        <h2 class="sr-only">Contact</h2>
+        <div class="panel__content | text-right">
+          <address>
+            <p>
+              <a href="mailto:jdavid.lantican@gmail.com"
+                >jdavid.lantican@gmail.com</a
+              >
+            </p>
+            <p><a href="tel:+639279132298">+63 (927) 913-2298</a></p>
+            <p>Bay, Laguna 4033</p>
+          </address>
+        </div>
       </section>
     </main>
     <footer id="main-footer">
@@ -133,6 +145,7 @@ const currentYear = new Date().getFullYear();
 </html>
 
 <script>
+  // Update copyright year to current year
   const copyrightYear = document.querySelector(
     "#copyright-year"
   ) as HTMLElement;
