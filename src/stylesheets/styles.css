@@ -84,7 +84,7 @@
 
   body {
     font-family: "Roboto Flex", sans-serif;
-    font-weight: var(--fw-thin);
+    font-weight: var(--fw-semibold);
     font-size: var(--fs-regular);
 
     background-color: var(--bg-color);
@@ -123,8 +123,7 @@
   #name,
   #main-footer {
     position: fixed;
-    left: calc(var(--padding) * 2);
-    right: calc(var(--padding) * 2);
+    inset-inline: calc(var(--padding) * 2);
 
     max-width: max-content;
 
@@ -140,7 +139,8 @@
   }
 
   #main-footer {
-    bottom: calc(var(--padding) * 2);
+    bottom: calc(var(--padding) / 4);
+    inset-inline: calc(var(--padding));
   }
 
   .panel {
@@ -156,6 +156,10 @@
     }
   }
 
+  .panel__content {
+    margin-block-start: calc(50vh - var(--padding));
+  }
+
   .panel__bg {
     position: fixed;
     inset: calc(var(--padding));
@@ -166,7 +170,7 @@
 
   #hero {
     .panel__content p {
-      max-width: 400px;
+      max-width: 75ch;
       margin-inline-start: auto;
 
       &:not(:first-of-type) {
