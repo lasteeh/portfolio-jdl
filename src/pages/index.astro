@@ -1,5 +1,6 @@
 ---
 import HeroCanvas from "../components/HeroCanvas.astro";
+import jdl from "../images/jdl.png";
 import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
@@ -55,13 +56,18 @@ const currentYear = new Date().getFullYear();
             message.
           </p>
         </div>
-        <div class="panel__bg">
+        <div class="panel__bg" data-bg-active="true">
           <HeroCanvas />
+          <div class="screen">
+            <img src={jdl} alt="This is Joshua" />
+            <div class="screen-overlay"></div>
+            <div class="screen-inset-border"></div>
+          </div>
         </div>
       </section>
       <section class="panel" id="works">
-        <h2 class="sr-only">Companies I've Worked With</h2>
         <div class="panel__content | text-right">
+          <h2 class="fs-regular fw-semibold">Companies I've Worked With</h2>
           <ul>
             <li>
               <h3>WeRevive</h3>
