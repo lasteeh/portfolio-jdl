@@ -1,0 +1,74 @@
+---
+const { bg, src, alt, id, fit = "cover" } = Astro.props;
+---
+
+<div
+  class="image-loader"
+  style={{
+    backgroundImage: `url("${bg}")`,
+    backgroundSize: `${fit}`,
+  }}
+  id={id}
+>
+  <img
+    src={src}
+    loading="lazy"
+    alt={alt}
+    style={{
+      objectFit: fit,
+    }}
+  />
+</div>
+
+<style>
+  .image-loader {
+    overflow: hidden;
+    background-repeat: no-repeat;
+  }
+
+  .image-loader:not(.loaded) {
+    animation: pulse 1.5s infinite alternate ease-in-out;
+  }
+
+  .image-loader > img {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .image-loader.loaded > img {
+    opacity: 1;
+  }
+
+  @keyframes pulse {
+    from {
+      filter: brightness(1);
+    }
+
+    to {
+      filter: brightness(0.8);
+    }
+  }
+</style>
+
+<script>
+  // shows initially hidden large pictures after loading successfully
+  const imgLoaders = document.querySelectorAll(".image-loader");
+
+  if (imgLoaders && imgLoaders.length > 0) {
+    imgLoaders.forEach((div: HTMLDivElement) => {
+      const img = div.querySelector("img");
+
+      function loadImage() {
+        div.classList.add("loaded");
+        div.style.backgroundImage = "none";
+      }
+
+      if (img.complete) {
+        loadImage();
+      } else {
+        img.addEventListener("load", loadImage);
+      }
+    });
+  }
+</script>

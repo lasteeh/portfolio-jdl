@@ -1,6 +1,8 @@
 ---
 import HeroCanvas from "../components/HeroCanvas.astro";
+import ImageLoader from "../components/ImageLoader.astro";
 import jdl from "../images/jdl.png";
+import jdlBG from "../images/jdl-loading.png";
 import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
@@ -59,7 +61,7 @@ const currentYear = new Date().getFullYear();
         <div class="panel__bg" data-bg-active="true">
           <HeroCanvas />
           <div class="screen">
-            <img src={jdl} alt="This is Joshua" />
+            <ImageLoader id="jdl__photo-card" bg={jdlBG} src={jdl} />
             <div class="screen-overlay"></div>
             <div class="screen-inset-border"></div>
           </div>
@@ -70,20 +72,28 @@ const currentYear = new Date().getFullYear();
           <h2 class="fs-regular fw-semibold">Companies I've Worked With</h2>
           <ul>
             <li>
-              <h3>WeRevive</h3>
-              <p>Marketing Assistant / Video Editor</p>
+              <button type="button"
+                ><h3>WeRevive</h3>
+                <p>Marketing Assistant / Video Editor</p></button
+              >
             </li>
             <li>
-              <h3>London Outsourced Inc. - July Social</h3>
-              <p>Freelance Creative Artist</p>
+              <button type="button"
+                ><h3>London Outsourced Inc. - July Social</h3>
+                <p>Freelance Creative Artist</p></button
+              >
             </li>
             <li>
-              <h3>The Summit Group - Powered by EXP</h3>
-              <p>Social Media Manager / Video Editor</p>
+              <button type="button"
+                ><h3>The Summit Group - Powered by EXP</h3>
+                <p>Social Media Manager / Video Editor</p></button
+              >
             </li>
             <li>
-              <h3>Jesus Is Lord Church - Los Baños</h3>
-              <p>Multimedia and Arts Network</p>
+              <button type="button"
+                ><h3>Jesus Is Lord Church - Los Baños</h3>
+                <p>Multimedia and Arts Network</p></button
+              >
             </li>
           </ul>
         </div>
