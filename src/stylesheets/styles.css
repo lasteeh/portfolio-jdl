@@ -350,44 +350,6 @@
 
     & li {
       margin-block-end: 1em;
-
-      > div > button {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        align-items: baseline;
-        justify-items: end;
-        column-gap: 1em;
-
-        margin-inline-start: auto;
-
-        border: none;
-        transition: opacity 250ms ease-in-out;
-
-        &:hover {
-          opacity: 0.25;
-        }
-
-        & h3 {
-          text-align: end;
-          grid-area: 1 / 2 / 2 / 3;
-        }
-        & p {
-          text-align: end;
-          grid-area: 1 / 1 / 2 / 2;
-        }
-      }
-      @media screen and (width < 1200px) {
-        & button {
-          grid-template-columns: 1fr;
-
-          & h3 {
-            grid-area: auto;
-          }
-          & p {
-            grid-area: auto;
-          }
-        }
-      }
     }
     .scroller video {
       flex-basis: 0;
