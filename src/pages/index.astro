@@ -4,6 +4,7 @@ import ImageLoader from "../components/ImageLoader.astro";
 import jdl from "../images/jdl.png";
 import jdlBG from "../images/jdl-loading.png";
 import "../stylesheets/styles.css";
+import WorkButton from "../components/WorkButton.astro";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -72,28 +73,44 @@ const currentYear = new Date().getFullYear();
           <h2 class="fs-regular fw-semibold">Companies I've Worked With</h2>
           <ul>
             <li>
-              <button type="button"
-                ><h3>WeRevive</h3>
-                <p>Marketing Assistant / Video Editor</p></button
+              <WorkButton
+                company="WeRevive"
+                position="Marketing Assistant / Video Editor"
               >
+                <video controls>
+                  <source
+                    src="http://media.w3.org/2010/05/sintel/trailer.mp4"
+                  />
+                </video>
+                <video controls>
+                  <source
+                    src="http://media.w3.org/2010/05/sintel/trailer.mp4"
+                  />
+                </video>
+                <video controls>
+                  <source
+                    src="https://www.exit109.com/~dnn/clips/RW20seconds_1.mp4"
+                  />
+                </video>
+              </WorkButton>
             </li>
             <li>
-              <button type="button"
-                ><h3>London Outsourced Inc. - July Social</h3>
-                <p>Freelance Creative Artist</p></button
-              >
+              <WorkButton
+                company="London Outsourced Inc. - July Social"
+                position="Freelance Creative Artist"
+              />
             </li>
             <li>
-              <button type="button"
-                ><h3>The Summit Group - Powered by EXP</h3>
-                <p>Social Media Manager / Video Editor</p></button
-              >
+              <WorkButton
+                company="The Summit Group - Powered by EXP"
+                position="Social Media Manager / Video Editor"
+              />
             </li>
             <li>
-              <button type="button"
-                ><h3>Jesus Is Lord Church - Los Baños</h3>
-                <p>Multimedia and Arts Network</p></button
-              >
+              <WorkButton
+                company="Jesus Is Lord Church - Los Baños"
+                position="Multimedia and Arts Network"
+              />
             </li>
           </ul>
         </div>
