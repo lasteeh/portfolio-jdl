@@ -8,9 +8,52 @@ import qrResume from "../images/qr-resume.png";
 import qrResumeLoading from "../images/qr-resume-loading.png";
 import qrPortfolio from "../images/qr-portfolio.png";
 import qrPortfolioLoading from "../images/qr-portfolio-loading.png";
+
+import lwg from "../images/education/lwg.png";
+import lwgLoading from "../images/education/lwg-loading.png";
+import ciit from "../images/education/ciit.png";
+import ciitLoading from "../images/education/ciit-loading.png";
+
+import photoshop from "../images/tools/photoshop.png";
+import premierePro from "../images/tools/premiere-pro.png";
+import reaper from "../images/tools/reaper.png";
+import canva from "../images/tools/canva.png";
+import audition from "../images/tools/audition.png";
+import afterEffects from "../images/tools/after-effects.png";
+
+import photoshopLoading from "../images/tools/photoshop-loading.png";
+import premiereProLoading from "../images/tools/premiere-pro-loading.png";
+import reaperLoading from "../images/tools/reaper-loading.png";
+import canvaLoading from "../images/tools/canva-loading.png";
+import auditionLoading from "../images/tools/audition-loading.png";
+import afterEffectsLoading from "../images/tools/after-effects-loading.png";
+
 import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
+
+const tools = [
+  {
+    title: "Adobe Premiere Pro",
+    image: premierePro,
+    background: premiereProLoading,
+  },
+  {
+    title: "Adobe After Effects",
+    image: afterEffects,
+    background: afterEffectsLoading,
+  },
+  { title: "Adobe Audition", image: audition, background: auditionLoading },
+  { title: "Adobe Photoshop", image: photoshop, background: photoshopLoading },
+  { title: "Canva", image: canva, background: canvaLoading },
+  {
+    title: "Reaper - Digital Audio Workstation",
+    image: reaper,
+    background: reaperLoading,
+  },
+];
+const adobeTools = tools.slice(0, 4);
+const otherTools = tools.slice(4);
 ---
 
 <html lang="en">
@@ -19,9 +62,8 @@ const currentYear = new Date().getFullYear();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      Catchy Catchphrase Here | Joshua David Lantican - Freelance Video Editor
-    </title>
+    <meta name="author" content="Lasty" />
+    <title>Joshua David Lantican - Freelance Video Editor</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@200;400;600&display=swap"
       rel="stylesheet"
@@ -74,7 +116,9 @@ const currentYear = new Date().getFullYear();
       </section>
       <section class="panel" id="works">
         <div class="panel__content | text-right">
-          <h2 class="fs-regular fw-semibold">Companies I've Worked With</h2>
+          <h2 class="bullet-title | fs-regular fw-semibold">
+            Companies I've Worked With
+          </h2>
           <ul>
             <li>
               <WorkButton
@@ -120,14 +164,19 @@ const currentYear = new Date().getFullYear();
         </div>
       </section>
       <section class="panel" id="services">
-        <h2 class="sr-only">Services</h2>
         <div class="panel__content | text-right">
+          <div class="title">
+            <div>
+              <h2 class="fs-regular fw-bold">Creative Mastery</h2>
+              <p class="fs-small">Elevate Your Content with My Skills</p>
+            </div>
+          </div>
           <ul>
-            <li>Post-Process Video Edit</li>
-            <li>Social Media Video Edit (Youtube, Reels, TikTok)</li>
-            <li>Video Repurpose</li>
-            <li>Podcast/Audio Edit</li>
-            <li>Photo Edit</li>
+            <li>Post-Process Video Editing</li>
+            <li>Social Media Video Editing (Youtube, Reels, TikTok)</li>
+            <li>Video Repurposing</li>
+            <li>Podcast/Audio Editing</li>
+            <li>Photo Editing</li>
             <li>Graphic Design</li>
             <li>Marketing (Email Marketing, Newsletter, Flyers & Posters)</li>
           </ul>
@@ -136,26 +185,78 @@ const currentYear = new Date().getFullYear();
       <section class="panel" id="info">
         <h2 class="sr-only">Info</h2>
         <div class="panel__content | text-right">
-          <p>Education</p>
-          <ul>
-            <li>
-              <p>Podcast Editing Course</p>
-              <p>2021, Life with Glaze</p>
+          <h3 class="bullet-title | fw-semibold">Certifications</h3>
+          <ul class="education-list">
+            <li id="LWG">
+              <p class="fw-thin">Podcast Editing Course</p>
+              <p class="fw-bold">2021 Life with Glaze</p>
             </li>
-            <li>
-              <p>Video Editing - Specialist Virtual Class</p>
-              <p>202, CIIT Philippines</p>
+            <li id="CIIT">
+              <p class="fw-thin">Video Editing - Specialist Virtual Class</p>
+              <p class="fw-bold">2022 CIIT Philippines</p>
             </li>
           </ul>
-          <p>Tools</p>
-          <ul>
-            <li>Adobe Premiere Pro</li>
-            <li>Adobe After Effects</li>
-            <li>Adobe Audition</li>
-            <li>Adobe Photoshop</li>
-            <li>Reaper - Digital Audio Workstation</li>
+          <h3 class="bullet-title | fw-semibold">Tools I Use</h3>
+          <ul class="tools-list">
+            <div class="tools-list__sub">
+              {
+                adobeTools.map((tool) => {
+                  return (
+                    <li title={tool.title}>
+                      <p class="sr-only">{tool.title}</p>
+                      <div class="tool-image">
+                        <ImageLoader
+                          src={tool.image}
+                          bg={tool.background}
+                          alt={`${tool.title} logo`}
+                          fit="contain"
+                        />
+                      </div>
+                    </li>
+                  );
+                })
+              }
+            </div>
+            <div class="tools-list__sub">
+              {
+                otherTools.map((tool) => {
+                  return (
+                    <li title={tool.title}>
+                      <p class="sr-only">{tool.title}</p>
+                      <div class="tool-image">
+                        <ImageLoader
+                          src={tool.image}
+                          bg={tool.background}
+                          alt={`${tool.title} logo`}
+                          fit="contain"
+                        />
+                      </div>
+                    </li>
+                  );
+                })
+              }
+            </div>
           </ul>
-          <button type="button">My Resume</button>
+        </div>
+        <div class="panel__bg" id="LWG-bg">
+          <div class="screen">
+            <ImageLoader
+              src={lwg}
+              bg={lwgLoading}
+              alt="Podcast Editing Certification"
+            />
+            <div class="screen-overlay"></div>
+          </div>
+        </div>
+        <div class="panel__bg" id="CIIT-bg">
+          <div class="screen">
+            <ImageLoader
+              src={ciit}
+              bg={ciitLoading}
+              alt="Video Editing Certification"
+            />
+            <div class="screen-overlay"></div>
+          </div>
         </div>
       </section>
       <section class="panel" id="contact">
@@ -171,7 +272,13 @@ const currentYear = new Date().getFullYear();
             <p>Bay, Laguna 4033, Philippines</p>
           </address>
           <div id="qr-holder">
-            <div class="qr" title="My Drive">
+            <a
+              href="https://drive.google.com/drive/u/0/folders/1ItWG0nrlN2XA9sbqBhx5q7qbRqcfyf6w"
+              target="_blank"
+              class="qr"
+              title="My Drive"
+            >
+              <p class="chip-label fw-bold">GDrive <span>&#129149;</span></p>
               <ImageLoader
                 src={qrPortfolio}
                 bg={qrPortfolioLoading}
@@ -179,9 +286,15 @@ const currentYear = new Date().getFullYear();
                 fit="contain"
                 id="qr-portfolio"
               />
-            </div>
+            </a>
 
-            <div class="qr" title="My Resume">
+            <a
+              href="https://drive.google.com/file/d/18ugHRP9TYRQm5lnBUCVDXMMmMzZi9NcY/view"
+              target="_blank"
+              class="qr"
+              title="My Resume"
+            >
+              <p class="chip-label fw-bold">Resume <span>&#129149;</span></p>
               <ImageLoader
                 src={qrResume}
                 bg={qrResumeLoading}
@@ -189,7 +302,7 @@ const currentYear = new Date().getFullYear();
                 fit="contain"
                 id="qr-resume"
               />
-            </div>
+            </a>
           </div>
         </div>
       </section>
