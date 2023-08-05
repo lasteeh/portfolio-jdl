@@ -290,6 +290,10 @@
   .fw-bold {
     font-weight: var(--fw-bold);
   }
+
+  .disable-scroll {
+    overflow: hidden;
+  }
 }
 
 @layer general {
@@ -357,6 +361,49 @@
 
       border: 1px solid var(--border-color);
       padding: 2px;
+    }
+  }
+
+  #contact {
+    #qr-holder {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--padding) / 2);
+
+      padding-block: calc(var(--padding) / 2);
+      max-width: max-content;
+      margin-inline-start: auto;
+
+      filter: drop-shadow(2px 2px 2px hsl(var(--neutral-color-900) / 50%));
+
+      .qr {
+        clip-path: polygon(
+          50% 0%,
+          60% 8%,
+          100% 8%,
+          100% 85%,
+          85% 100%,
+          5% 100%,
+          0 95%,
+          0 5%,
+          5% 0
+        );
+
+        filter: brightness(0.8) contrast(1.5);
+
+        background: linear-gradient(
+          hsl(var(--primary-color-500) / 80%),
+          hsl(var(--primary-color-800) / 25%)
+        );
+        padding-block: calc(var(--padding) / 2);
+        padding-inline: calc(var(--padding) / 4);
+        width: 100%;
+        max-width: 125px;
+
+        .image-loader {
+          mix-blend-mode: lighten;
+        }
+      }
     }
   }
 

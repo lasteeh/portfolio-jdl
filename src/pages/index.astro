@@ -3,8 +3,12 @@ import HeroCanvas from "../components/HeroCanvas.astro";
 import ImageLoader from "../components/ImageLoader.astro";
 import jdl from "../images/jdl.png";
 import jdlBG from "../images/jdl-loading.png";
-import "../stylesheets/styles.css";
 import WorkButton from "../components/WorkButton.astro";
+import qrResume from "../images/qr-resume.png";
+import qrResumeLoading from "../images/qr-resume-loading.png";
+import qrPortfolio from "../images/qr-portfolio.png";
+import qrPortfolioLoading from "../images/qr-portfolio-loading.png";
+import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -155,7 +159,7 @@ const currentYear = new Date().getFullYear();
         </div>
       </section>
       <section class="panel" id="contact">
-        <h2 class="sr-only">Contact</h2>
+        <h2 class="sr-only">Get In Touch</h2>
         <div class="panel__content | text-right">
           <address>
             <p>
@@ -164,8 +168,29 @@ const currentYear = new Date().getFullYear();
               >
             </p>
             <p><a href="tel:+639279132298">+63 (927) 913-2298</a></p>
-            <p>Bay, Laguna 4033</p>
+            <p>Bay, Laguna 4033, Philippines</p>
           </address>
+          <div id="qr-holder">
+            <div class="qr" title="My Drive">
+              <ImageLoader
+                src={qrPortfolio}
+                bg={qrPortfolioLoading}
+                alt="QR Code for my portfolio drive."
+                fit="contain"
+                id="qr-portfolio"
+              />
+            </div>
+
+            <div class="qr" title="My Resume">
+              <ImageLoader
+                src={qrResume}
+                bg={qrResumeLoading}
+                alt="QR Code for my resume."
+                fit="contain"
+                id="qr-resume"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </main>

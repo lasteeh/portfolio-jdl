@@ -222,6 +222,7 @@ const idLabel = company
 </style>
 
 <script>
+  const body = document.querySelector("body");
   const workItems = Array.from(document.querySelectorAll("[data-work-label]"));
 
   if (workItems) {
@@ -232,11 +233,17 @@ const idLabel = company
         const dialogElement = item.querySelector("dialog");
 
         showButton.addEventListener("click", () => {
+          body.classList.toggle("disable-scroll");
           dialogElement.showModal();
         });
 
         hideButton.addEventListener("click", () => {
+          body.classList.toggle("disable-scroll");
           dialogElement.close();
+        });
+
+        dialogElement.addEventListener("cancel", () => {
+          body.classList.remove("disable-scroll");
         });
       }
     });
