@@ -71,6 +71,13 @@ const otherTools = tools.slice(4);
   </head>
   <body>
     <div id="main-frame"></div>
+    <div id="theme-switcher">
+      <input type="checkbox" name="theme-switch" id="theme-switch" />
+      <label for="theme-switch">
+        <p><span class="light box-marker"></span>Light</p>
+        <p><span class="dark box-marker"></span>Dark</p>
+      </label>
+    </div>
     <header id="main-header">
       <nav>
         <ul>
@@ -321,4 +328,28 @@ const otherTools = tools.slice(4);
     "#copyright-year"
   ) as HTMLElement;
   copyrightYear.innerText = new Date().getFullYear().toString();
+
+  // Retrieve the stored theme choice and apply it to the body
+  let currentTheme = localStorage.getItem("theme");
+
+  // If no theme is stored, use system preference
+  currentTheme =
+    currentTheme ||
+    (window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark");
+
+  // Apply the theme
+  document.body.dataset.theme = currentTheme;
+
+  // Toggle between dark theme and light theme
+  document.getElementById("theme-switch").addEventListener("change", () => {
+    // Switch the theme
+    document.body.dataset.theme =
+      document.body.dataset.theme === "dark" ? "light" : "dark";
+
+    // Store the user's theme choice in local storage
+    localStorage.setItem("theme", document.body.dataset.theme);
+  });
 </script>
