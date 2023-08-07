@@ -234,6 +234,8 @@
 
     .screen-overlay {
       --line-height: 2px;
+      --transparent-line: transparent;
+      --line-opacity: 90%;
 
       position: absolute;
       inset: 0;
@@ -242,10 +244,10 @@
       width: 100%;
 
       background: linear-gradient(
-        hsl(var(--primary-color-800) / 90%),
-        hsl(var(--primary-color-800) / 90%) var(--line-height),
-        transparent var(--line-height),
-        transparent calc(var(--line-height) * 2)
+        hsl(var(--primary-color-800) / var(--line-opacity)),
+        hsl(var(--primary-color-800) / var(--line-opacity)) var(--line-height),
+        var(--transparent-line) var(--line-height),
+        var(--transparent-line) calc(var(--line-height) * 2)
       );
       background-size: 100% calc(var(--line-height) * 2);
 
@@ -522,21 +524,6 @@
         height: 100%;
         overflow: hidden;
       }
-      @media (prefers-color-scheme: dark) {
-        > div {
-          filter: brightness(0.2);
-        }
-      }
-      @media (prefers-color-scheme: light) {
-        > div {
-          filter: brightness(1.8);
-          background-color: hsl(var(--neutral-color-900));
-
-          .image-loader {
-            opacity: 0.4;
-          }
-        }
-      }
 
       .image-loader {
         height: 100%;
@@ -545,6 +532,20 @@
       & img {
         height: 100%;
       }
+    }
+  }
+  [data-theme="dark"] #info .panel__bg > div {
+    filter: brightness(0.2);
+  }
+  [data-theme="light"] #info .panel__bg > div {
+    --primary-color-800: 0 0% 50%;
+    --transparent-line: hsl(0, 0%, 100%, 0.1);
+
+    filter: brightness(1.8);
+    background-color: hsl(var(--neutral-color-900));
+
+    .image-loader {
+      opacity: 0.4;
     }
   }
 
