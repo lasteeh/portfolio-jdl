@@ -28,6 +28,11 @@ import canvaLoading from "../images/tools/canva-loading.png";
 import auditionLoading from "../images/tools/audition-loading.png";
 import afterEffectsLoading from "../images/tools/after-effects-loading.png";
 
+import weReviveBG from "../videos/bg/Werevive.webm";
+import londongBG from "../videos/bg/London.webm";
+import summitBG from "../videos/bg/Summit.webm";
+import jilBG from "../videos/bg/Jil.webm";
+
 import "../stylesheets/styles.css";
 
 const currentYear = new Date().getFullYear();
@@ -131,6 +136,7 @@ const otherTools = tools.slice(4);
               <WorkButton
                 company="WeRevive"
                 position="Marketing Assistant / Video Editor"
+                bg={weReviveBG}
               >
                 <video controls>
                   <source
@@ -153,18 +159,21 @@ const otherTools = tools.slice(4);
               <WorkButton
                 company="London Outsourced Inc. - July Social"
                 position="Freelance Creative Artist"
+                bg={londongBG}
               />
             </li>
             <li>
               <WorkButton
                 company="The Summit Group - Powered by EXP"
                 position="Social Media Manager / Video Editor"
+                bg={summitBG}
               />
             </li>
             <li>
               <WorkButton
                 company="Jesus Is Lord Church - Los Baños"
                 position="Multimedia and Arts Network"
+                bg={jilBG}
               />
             </li>
           </ul>

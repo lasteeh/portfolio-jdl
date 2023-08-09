@@ -62,11 +62,21 @@
     background-color: transparent;
     border: 1px solid var(--border-color);
 
+    text-shadow: inherit;
+
     cursor: pointer;
   }
 
   :where(ul, ol, li) {
     list-style: none;
+  }
+
+  section,
+  header,
+  footer {
+    opacity: 1;
+
+    transition: opacity var(--theme-transition-speed) ease-in-out;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -279,6 +289,8 @@
     outline-offset: 2px;
 
     background-color: var(--border-color);
+
+    transition: all var(--theme-transition-speed) ease-in-out;
   }
 }
 
@@ -334,9 +346,17 @@
   .disable-scroll {
     overflow: hidden;
   }
+
+  .opacity-05 {
+    opacity: 0.5;
+  }
 }
 
 @layer general {
+  body {
+    text-shadow: 1px 1px 2px hsl(var(--neutral-color-900) / 25%);
+  }
+
   [data-theme="light"] .light.box-marker {
     background-color: var(--border-color);
   }
@@ -414,14 +434,36 @@
     }
   }
 
+  body:has(#works li:hover) {
+    color: hsl(var(--neutral-color-100));
+
+    .bullet-title {
+      --border-color: hsl(var(--neutral-color-100));
+    }
+  }
+  body:has(#works li:hover) :where(#main-header, #hero) {
+    opacity: 0.05;
+  }
   #works {
     & h2 {
       margin-block-end: 2em;
     }
 
-    & li {
-      margin-block-end: 1em;
+    & ul {
+      isolation: isolate;
+
+      & li {
+        margin-block-end: 1em;
+        isolation: isolate;
+
+        transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+      }
+
+      &:hover li:not(li:hover) {
+        opacity: 0.25;
+      }
     }
+
     .scroller video {
       flex-basis: 0;
       height: max(260px, 50vh);
