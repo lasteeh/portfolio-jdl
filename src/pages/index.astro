@@ -74,7 +74,12 @@ const otherTools = tools.slice(4);
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body data-active-section="hero">
+    <div id="loading-screen">
+      <div id="loading-message">
+        <p><span>Joshua David Lantican</span><span>Portfolio</span></p>
+      </div>
+    </div>
     <div id="main-frame"></div>
     <div id="theme-switcher">
       <input type="checkbox" name="theme-switch" id="theme-switch" />
@@ -86,11 +91,11 @@ const otherTools = tools.slice(4);
     <header id="main-header">
       <nav>
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#works">Works</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#info">Info</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#hero">Home</a><span>&#12472;</span></li>
+          <li><a href="#works">Works</a><span>&#12472;</span></li>
+          <li><a href="#services">Services</a><span>&#12472;</span></li>
+          <li><a href="#info">Info</a><span>&#12472;</span></li>
+          <li><a href="#contact">Contact</a><span>&#12472;</span></li>
         </ul>
       </nav>
     </header>
@@ -136,47 +141,50 @@ const otherTools = tools.slice(4);
               <WorkButton
                 company="WeRevive"
                 position="Marketing Assistant / Video Editor"
-                bg={weReviveBG}
-              >
-                <video controls>
-                  <source
-                    src="http://media.w3.org/2010/05/sintel/trailer.mp4"
-                  />
-                </video>
-                <video controls>
-                  <source
-                    src="http://media.w3.org/2010/05/sintel/trailer.mp4"
-                  />
-                </video>
-                <video controls>
-                  <source
-                    src="https://www.exit109.com/~dnn/clips/RW20seconds_1.mp4"
-                  />
-                </video>
-              </WorkButton>
+              />
             </li>
             <li>
               <WorkButton
                 company="London Outsourced Inc. - July Social"
                 position="Freelance Creative Artist"
-                bg={londongBG}
               />
             </li>
             <li>
               <WorkButton
                 company="The Summit Group - Powered by EXP"
                 position="Social Media Manager / Video Editor"
-                bg={summitBG}
               />
             </li>
             <li>
               <WorkButton
                 company="Jesus Is Lord Church - Los Baños"
                 position="Multimedia and Arts Network"
-                bg={jilBG}
               />
             </li>
           </ul>
+        </div>
+        <div class="panel__bg" data-work-bg="werevive">
+          <video loop muted preload="none">
+            <source src={weReviveBG} />
+          </video>
+        </div>
+        <div
+          class="panel__bg"
+          data-work-bg="london-outsourced-inc---july-social"
+        >
+          <video loop muted preload="none">
+            <source src={londongBG} />
+          </video>
+        </div>
+        <div class="panel__bg" data-work-bg="the-summit-group---powered-by-exp">
+          <video loop muted preload="none">
+            <source src={summitBG} />
+          </video>
+        </div>
+        <div class="panel__bg" data-work-bg="jesus-is-lord-church---los-baos">
+          <video loop muted preload="none">
+            <source src={jilBG} />
+          </video>
         </div>
       </section>
       <section class="panel" id="services">
@@ -332,6 +340,26 @@ const otherTools = tools.slice(4);
 </html>
 
 <script>
+  window.addEventListener("load", () => {
+    const loadingScreen = document.getElementById("loading-screen");
+    const loadingMessage = loadingScreen.querySelector(
+      "#loading-message"
+    ) as HTMLElement;
+    const mainContent = document.querySelector("main");
+    setTimeout(() => {
+      loadingMessage.style.opacity = "0";
+    }, 1500);
+    setTimeout(() => {
+      loadingScreen.style.opacity = "0";
+    }, 2000);
+    setTimeout(() => {
+      loadingScreen.style.visibility = "hidden";
+    }, 2000);
+    setTimeout(() => {
+      mainContent.style.opacity = "1";
+    }, 2000);
+  });
+
   // Update copyright year to current year
   const copyrightYear = document.querySelector(
     "#copyright-year"
@@ -360,5 +388,27 @@ const otherTools = tools.slice(4);
 
     // Store the user's theme choice in local storage
     localStorage.setItem("theme", document.body.dataset.theme);
+  });
+
+  // Change opacity when section comes and goes into viewport
+  const sections = document.querySelectorAll("main > section");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelector("body").dataset.activeSection =
+            entry.target.id;
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
   });
 </script>

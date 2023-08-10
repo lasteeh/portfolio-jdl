@@ -25,6 +25,7 @@
     --fs-regular: clamp(0.75rem, 5vw, 1rem);
     --fs-large: clamp(1.75rem, 4vw, 3rem);
 
+    --z-loading-screen: 900;
     --z-work-dialog: 600;
     --z-main-nav: 500;
     --z-content-bg: -200;
@@ -104,6 +105,16 @@
     --bg-color: hsl(var(--primary-color-100));
     --text-color: hsl(var(--neutral-color-900));
     --border-color: hsl(var(--neutral-color-900) / 50%);
+  }
+
+  main {
+    opacity: 0;
+    transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+  }
+
+  dialog {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
   }
 }
 
@@ -290,7 +301,39 @@
 
     background-color: var(--border-color);
 
-    transition: all var(--theme-transition-speed) ease-in-out;
+    transition: all calc(var(--theme-transition-speed) / 2) ease-in-out;
+  }
+
+  #loading-screen {
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-color);
+
+    opacity: 1;
+    transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+
+    z-index: var(--z-loading-screen);
+
+    #loading-message {
+      position: fixed;
+      inset: 0;
+
+      max-width: max-content;
+      max-height: max-content;
+
+      margin: auto;
+
+      opacity: 1;
+      transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+
+      & p {
+        display: flex;
+        gap: 2ch;
+
+        font-size: var(--fs-large);
+        font-weight: var(--fw-thin);
+      }
+    }
   }
 }
 
@@ -355,6 +398,15 @@
 @layer general {
   body {
     text-shadow: 1px 1px 2px hsl(var(--neutral-color-900) / 25%);
+
+    & main > section .panel__content {
+      opacity: 0;
+
+      transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+    }
+    & main > section.panel.visible .panel__content {
+      opacity: 1;
+    }
   }
 
   [data-theme="light"] .light.box-marker {
@@ -362,6 +414,42 @@
   }
   [data-theme="dark"] .dark.box-marker {
     background-color: var(--border-color);
+  }
+
+  #main-header {
+    & nav li {
+      display: flex;
+      align-items: center;
+      gap: 0.5ch;
+
+      & span {
+        opacity: 0;
+
+        transition: opacity calc(var(--theme-transition-speed) / 2) ease-in-out;
+      }
+    }
+  }
+
+  body[data-active-section="hero"] #main-header li:has([href="#hero"]) span {
+    opacity: 1;
+  }
+  body[data-active-section="works"] #main-header li:has([href="#works"]) span {
+    opacity: 1;
+  }
+  body[data-active-section="services"]
+    #main-header
+    li:has([href="#services"])
+    span {
+    opacity: 1;
+  }
+  body[data-active-section="info"] #main-header li:has([href="#info"]) span {
+    opacity: 1;
+  }
+  body[data-active-section="contact"]
+    #main-header
+    li:has([href="#contact"])
+    span {
+    opacity: 1;
   }
 
   #theme-switcher {
@@ -434,8 +522,8 @@
     }
   }
 
-  body:has(#works li:hover) {
-    color: hsl(var(--neutral-color-100));
+  body:has(#works li:hover) #works {
+    --white-text-color: hsl(var(--neutral-color-100));
 
     .bullet-title {
       --border-color: hsl(var(--neutral-color-100));
@@ -445,6 +533,10 @@
     opacity: 0.05;
   }
   #works {
+    color: var(--white-text-color);
+
+    transition: color calc(var(--theme-transition-speed) / 2) ease-in-out;
+
     & h2 {
       margin-block-end: 2em;
     }
@@ -452,7 +544,13 @@
     & ul {
       isolation: isolate;
 
+      margin-inline-start: auto;
+      max-width: max-content;
+
       & li {
+        margin-inline-start: auto;
+        max-width: max-content;
+
         margin-block-end: 1em;
         isolation: isolate;
 
@@ -460,17 +558,45 @@
       }
 
       &:hover li:not(li:hover) {
-        opacity: 0.25;
+        opacity: 0.1;
       }
     }
 
-    .scroller video {
-      flex-basis: 0;
-      height: max(260px, 50vh);
-
-      border: 1px solid var(--border-color);
-      padding: 2px;
+    .scroller > * {
+      flex: 1 1 300px;
     }
+
+    .panel__bg {
+      isolation: isolate;
+
+      transition: opacity 1s ease-in-out;
+
+      & video {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        filter: brightness(0.4);
+      }
+    }
+  }
+  #works:has([data-work-label="werevive"]:hover)
+    [data-work-bg="werevive"].panel__bg {
+    opacity: 1;
+  }
+  #works:has([data-work-label="london-outsourced-inc---july-social"]:hover)
+    [data-work-bg="london-outsourced-inc---july-social"].panel__bg {
+    opacity: 1;
+  }
+  #works:has([data-work-label="the-summit-group---powered-by-exp"]:hover)
+    [data-work-bg="the-summit-group---powered-by-exp"].panel__bg {
+    opacity: 1;
+  }
+  #works:has([data-work-label="jesus-is-lord-church---los-baos"]:hover)
+    [data-work-bg="jesus-is-lord-church---los-baos"].panel__bg {
+    opacity: 1;
   }
 
   #services {
