@@ -2,6 +2,8 @@
 
 @layer reset, base, layout, components, utilities, general;
 
+/* test comment */
+
 @layer reset {
   :root {
     color-scheme: dark light;
